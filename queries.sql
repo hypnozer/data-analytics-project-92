@@ -24,11 +24,13 @@ FROM sales
 INNER JOIN employees ON sales.sales_person_id = employees.employee_id
 INNER JOIN products ON sales.product_id = products.product_id
 GROUP BY employees.employee_id, employees.first_name, employees.last_name
-HAVING AVG(products.price * sales.quantity) < (
-    SELECT AVG(products.price * sales.quantity)
-    FROM sales
-    INNER JOIN products ON sales.product_id = products.product_id
-)
+HAVING
+    AVG(products.price * sales.quantity) < (
+        SELECT AVG(all_products.price * all_sales.quantity)
+        FROM sales AS all_sales
+        INNER JOIN products AS all_products
+            ON all_sales.product_id = all_products.product_id
+    )
 ORDER BY AVG(products.price * sales.quantity), seller;
 
 -- Выручка каждого продавца по дням недели, округленная вниз.
