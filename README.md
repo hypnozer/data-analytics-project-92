@@ -4,3 +4,6 @@
 [Продажи: продавцы и покупатели](https://840087cf.us1a.app.preset.io/superset/dashboard/8/)
 
 Описание источников и показателей: [dashboard-plan.md](dashboard-plan.md).
+
+### Презентация результатов
+[Скачать презентацию в PDF](presentation.pdf) — графики, выводы и ссылка на дашборд.
